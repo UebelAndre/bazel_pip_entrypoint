@@ -1,0 +1,9 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+
+py_binary(
+    name = "entrypoint_script_maker",
+    srcs = ["script_maker.py"],
+    imports = ["."],
+    main = "script_maker.py",
+    visibility = ["//visibility:public"],
+)

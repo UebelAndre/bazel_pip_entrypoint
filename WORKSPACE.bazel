@@ -1,0 +1,32 @@
+workspace(name = "bazel_pip_entrypoint")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "rules_python",
+    sha256 = "33e29fdd666cc066dec820bc01097263e4a79683ad6a5c99450639d1da334337",
+    strip_prefix = "rules_python-cd64466928a2cace1b8aa6d097c3ac31d35d4555",
+    url = "https://github.com/bazelbuild/rules_python/archive/cd64466928a2cace1b8aa6d097c3ac31d35d4555.tar.gz",
+)
+
+http_archive(
+    name = "io_bazel_stardoc",
+    sha256 = "ff10a8b1503f5606fab5aa5bc9ae267272c023af7789f03caef95b5ab3fe0df2",
+    strip_prefix = "stardoc-d93ee5347e2d9c225ad315094507e018364d5a67",
+    urls = [
+        "https://github.com/bazelbuild/stardoc/archive/d93ee5347e2d9c225ad315094507e018364d5a67.zip",
+    ],
+)
+
+load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
+
+stardoc_repositories()
+
+http_archive(
+    name = "bazel_skylib",
+    sha256 = "1c531376ac7e5a180e0237938a2536de0c54d93f5c278634818e0efc952dd56c",
+    urls = [
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.3/bazel-skylib-1.0.3.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.3/bazel-skylib-1.0.3.tar.gz",
+    ],
+)
